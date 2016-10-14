@@ -498,6 +498,31 @@ void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count,
                         uint8_t * dest)
 { 
   uint8_t i = 0;
-  while (i < count) {
+  while (i < count)
+  {
     dest[i++] = (uint8_t)wiringPiI2CReadReg8( (int)address, (int)subAddress++ );// Put read results in the Rx buffer
+  }
 }
+
+unsigned long micros()
+{
+  struct timeval tv;
+  gettimeofday(&tv,NULL);
+  unsigned long time_in_micros = 1000000 * tv.tv_sec + tv.tv_usec;
+  return time_in_micros;
+}
+
+void delay(unsigned long ms)
+{
+  uint32_t start = micros();
+
+  while (ms > 0) {
+    //yield();
+    while ( ms > 0 && (micros() - start) >= 1000) {
+      ms--;
+      start += 1000;
+    }
+  }
+}
+
+
