@@ -512,8 +512,10 @@ void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
     //std::cout<<"writing byte to "<<(int)address<<":"<<(int)subAddress<<" = "<<(int)data<<std::endl;
   //#endif
     if (address == MPU9250_ADDRESS)
+      std::cout << MPU9250::fdMPU9250 << std::endl;
       wiringPiI2CWriteReg8(MPU9250::fdMPU9250, subAddress, data);
     if (address == AK8963_ADDRESS)
+      std::cout << MPU9250::fdAK8963 << std::endl;
       wiringPiI2CWriteReg8(MPU9250::fdAK8963, subAddress, data);
   }
 
@@ -525,8 +527,10 @@ void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
         //#endif
  
     if (address == MPU9250_ADDRESS)
+      std::cout << MPU9250::fdMPU9250 << std::endl;
       data = wiringPiI2CReadReg8(MPU9250::fdMPU9250, subAddress);
     if (address == AK8963_ADDRESS)
+      std::cout << MPU9250::fdAK8963 << std::endl;
       data = wiringPiI2CReadReg8(MPU9250::fdAK8963, subAddress);
 
     return data;
