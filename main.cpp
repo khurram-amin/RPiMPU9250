@@ -16,17 +16,17 @@ int main()
     // Start by performing self test and reporting values
 	myIMU.MPU9250SelfTest(myIMU.SelfTest);
 	printf("x-axis self test: acceleration trim within : ");
-	printf("%d", myIMU.SelfTest[0]); printf("perc of factory value\n");
+	printf("%u", myIMU.SelfTest[0]); printf(" perc of factory value\n");
 	printf("y-axis self test: acceleration trim within : ");
-	printf("%d", myIMU.SelfTest[1]); printf("perc of factory value\n");
+	printf("%u", myIMU.SelfTest[1]); printf(" perc of factory value\n");
 	printf("z-axis self test: acceleration trim within : ");
-	printf("%d", myIMU.SelfTest[2]); printf("perc of factory value\n");
+	printf("%u", myIMU.SelfTest[2]); printf(" perc of factory value\n");
 	printf("x-axis self test: gyration trim within : ");
-	printf("%d", myIMU.SelfTest[3]); printf("perc of factory value\n");
+	printf("%u", myIMU.SelfTest[3]); printf(" perc of factory value\n");
 	printf("y-axis self test: gyration trim within : ");
-	printf("%d", myIMU.SelfTest[4]); printf("perc of factory value\n");
+	printf("%u", myIMU.SelfTest[4]); printf(" perc of factory value\n");
 	printf("z-axis self test: gyration trim within : ");
-	printf("%d", myIMU.SelfTest[5]); printf("perc of factory value\n");	
+	printf("%u", myIMU.SelfTest[5]); printf(" perc of factory value\n");	
 
 	//Calibrate gyro and accelerometers, load biases in bias registers
 	myIMU.calibrateMPU9250(myIMU.gyroBias, myIMU.accelBias);
@@ -114,30 +114,30 @@ int main()
   				if(1)
   				{
 		        // Print acceleration values in milligs!
-  					printf("X-acceleration: "); printf("%d", 1000*myIMU.ax);
+  					printf("X-acceleration: "); printf("%u", 1000*myIMU.ax);
   					printf(" mg ");
-  					printf("Y-acceleration: "); printf("%d", 1000*myIMU.ay);
+  					printf("Y-acceleration: "); printf("%u", 1000*myIMU.ay);
   					printf(" mg ");
-  					printf("Z-acceleration: "); printf("%d", 1000*myIMU.az);
+  					printf("Z-acceleration: "); printf("%u", 1000*myIMU.az);
   					printf(" mg \n");
 
 		        // Print gyro values in degree/sec
-  					printf("X-gyro rate: "); printf("%d",myIMU.gx);
+  					printf("X-gyro rate: "); printf("%u",myIMU.gx);
   					printf(" degrees/sec ");
-  					printf("Y-gyro rate: "); printf("%d",myIMU.gy);
+  					printf("Y-gyro rate: "); printf("%u",myIMU.gy);
   					printf(" degrees/sec ");
-  					printf("Z-gyro rate: "); printf("%d",myIMU.gz);
+  					printf("Z-gyro rate: "); printf("%u",myIMU.gz);
   					printf(" degrees/sec\n");
 
 		        // Print mag values in degree/sec
-  					printf("X-mag field: "); printf("%d", myIMU.mx);
+  					printf("X-mag field: "); printf("%u", myIMU.mx);
   					printf(" mG ");
-  					printf("Y-mag field: "); printf("%d", myIMU.my);
+  					printf("Y-mag field: "); printf("%u", myIMU.my);
   					printf(" mG ");
-  					printf("Z-mag field: "); printf("%d", myIMU.mz);
+  					printf("Z-mag field: "); printf("%u", myIMU.mz);
   					printf(" mG\n");
 
-			        myIMU.tempCount = myIMU.readTempData();  // Read the adc values
+			        myIMU.tempCount = myIMU.readTempData();  // Read the adc value
 			        // Temperature in degrees Centigrade
 			        myIMU.temperature = ((float) myIMU.tempCount) / 333.87 + 21.0;
 			        // Print temperature in degrees Centigrade
