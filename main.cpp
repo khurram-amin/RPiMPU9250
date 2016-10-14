@@ -111,7 +111,7 @@ int main()
 		  	myIMU.delt_t = millis() - myIMU.count;
 		  	if (myIMU.delt_t > 500)
 		  	{
-		  		if(SerialDebug)
+		  		if(1)
 		  		{
 		        // Print acceleration values in milligs!
 		  			printf("X-acceleration: "); printf("%d", 1000*myIMU.ax);
@@ -141,12 +141,11 @@ int main()
 			        // Temperature in degrees Centigrade
 			        myIMU.temperature = ((float) myIMU.tempCount) / 333.87 + 21.0;
 			        // Print temperature in degrees Centigrade
-			        printf("Temperature is ");  print("%d", myIMU.temperature);
+			        printf("Temperature is ");  printf("%d", myIMU.temperature);
 			        printf(" degrees C\n");
 		    	}
-				myIMU.count = millis();
-	        	digitalWrite(myLed, !digitalRead(myLed));  // toggle led
-	    	} // if (myIMU.delt_t > 500)
+				myIMU.count = micros()/1000;
+	        } // if (myIMU.delt_t > 500)
 	  	} // if (!AHRS)
 	  }
 	}
