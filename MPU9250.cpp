@@ -2,6 +2,7 @@
 
 MPU9250::MPU9250()
 {
+  wiringPiI2CSetup ((int)0x68); 
   // Specify sensor full scale
   Gscale = GFS_250DPS;
   Ascale = AFS_2G;
