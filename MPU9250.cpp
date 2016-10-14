@@ -2,7 +2,8 @@
 
 MPU9250::MPU9250()
 {
-  std::cout << wiringPiI2CSetup((int)0x68) << std::endl;
+  fdAK8963 = wiringPiI2CSetup(AK8963_ADDRESS);
+  fdMPU9250 = wiringPiI2CSetup(MPU9250_ADDRESS);
   // Specify sensor full scale
   Gscale = GFS_250DPS;
   Ascale = AFS_2G;
@@ -470,18 +471,18 @@ void MPU9250::MPU9250SelfTest(float * destination) // Should return percent devi
 
 // Changed        
 // Wire.h read and write protocols
-void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
-{
-  wiringPiI2CWriteReg8( (int)address, (int)subAddress, (int)data) ;
-}
+// void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
+// {
+//   wiringPiI2CWriteReg8( (int)address, (int)subAddress, (int)data) ;
+// }
 
-// Changed
-uint8_t MPU9250::readByte(uint8_t address, uint8_t subAddress)
-{
-  uint8_t data; // `data` will store the register data   
-  data = (uint8_t)wiringPiI2CReadReg8( (int)address, (int) subAddress) ;
-  return data;                             // Return data read from slave register
-}
+// // Changed
+// uint8_t MPU9250::readByte(uint8_t address, uint8_t subAddress)
+// {
+//   uint8_t data; // `data` will store the register data   
+//   data = (uint8_t)wiringPiI2CReadReg8( (int)address, (int) subAddress) ;
+//   return data;                             // Return data read from slave register
+// }
 
 // void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count,
 //                         uint8_t * dest)
@@ -495,15 +496,52 @@ uint8_t MPU9250::readByte(uint8_t address, uint8_t subAddress)
 //     dest[i++] = Wire.read(); }         // Put read results in the Rx buffer
 // }
 
-void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count,
-                        uint8_t * dest)
-{ 
-  uint8_t i = 0;
-  while (i < count)
+// void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count,
+//                         uint8_t * dest)
+// { 
+//   uint8_t i = 0;
+//   while (i < count)
+//   {
+//     dest[i++] = (uint8_t)wiringPiI2CReadReg8( (int)address, (int)subAddress++ );// Put read results in the Rx buffer
+//   }
+// }
+///////////////////////////////////
+void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
   {
-    dest[i++] = (uint8_t)wiringPiI2CReadReg8( (int)address, (int)subAddress++ );// Put read results in the Rx buffer
+  #ifdef 1
+    std::cout<<"writing byte to "<<(int)address<<":"<<(int)subAddress<<" = "<<(int)data<<std::endl;
+  #endif
+    if (address == MPU9250_ADDRESS)
+      wiringPiI2CWriteReg8(fdMPU9250, subAddress, data);
+    if (address == AK8963_ADDRESS)
+      wiringPiI2CWriteReg8(fdAK8963, subAddress, data);
   }
-}
+
+  char readByte(uint8_t address, uint8_t subAddress)
+  {
+    char data; 
+        #ifdef 1
+                std::cout<<"reading byte from "<<(int)address<<":"<<(int)subAddress<<std::endl;
+        #endif
+ 
+    if (address == MPU9250_ADDRESS)
+      data = wiringPiI2CReadReg8(fdMPU9250, subAddress);
+    if (address == AK8963_ADDRESS)
+      data = wiringPiI2CReadReg8(fdAK8963, subAddress);
+
+    return data;
+  }
+
+  void readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest)
+  {
+    char data;
+    for (char i = 0; i < count; i++)
+    {
+      data = readByte(address, subAddress + i);
+      dest[i] = data;
+    }
+  }
+  ////////////////////////////////////////////////////////////////
 
 unsigned long MPU9250::micros()
 {

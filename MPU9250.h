@@ -212,6 +212,9 @@ class MPU9250
     uint8_t Mscale;
     uint8_t Mmode;
 
+    int fdMPU9250;
+    int fdAK8963;
+
   public:
     float pitch, yaw, roll;
     float temperature;   // Stores the real internal chip temperature in Celsius
