@@ -18,7 +18,7 @@ int main()
     printf("x-axis self test: acceleration trim within : ");
     printf("%d", myIMU.SelfTest[0]); printf("% of factory value\n");
     printf("y-axis self test: acceleration trim within : ");
-	printf("%d", myIMU.SelfTest[1]); print("% of factory value\n");
+	printf("%d", myIMU.SelfTest[1]); printf("% of factory value\n");
 	printf("z-axis self test: acceleration trim within : ");
 	printf("%d", myIMU.SelfTest[2]); printf("% of factory value\n");
 	printf("x-axis self test: gyration trim within : ");
