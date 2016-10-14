@@ -38,7 +38,7 @@ int main()
 
     // Read the WHO_AM_I register of the magnetometer, this is a good test of
     // communication
-    byte d = myIMU.readByte(AK8963_ADDRESS, WHO_AM_I_AK8963);
+    uint8_t d = myIMU.readByte(AK8963_ADDRESS, WHO_AM_I_AK8963);
     printf("AK8963 "); printf("I AM "); printf("%X", d);
     printf(" I should be "); printf("0x48");
 
