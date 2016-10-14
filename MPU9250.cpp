@@ -504,7 +504,7 @@ void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count,
   }
 }
 
-unsigned long micros()
+unsigned long MPU9250::micros()
 {
   struct timeval tv;
   gettimeofday(&tv,NULL);
@@ -512,7 +512,7 @@ unsigned long micros()
   return time_in_micros;
 }
 
-void delay(unsigned long ms)
+void MPU9250::delay(unsigned long ms)
 {
   uint32_t start = micros();
 
