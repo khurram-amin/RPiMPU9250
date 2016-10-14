@@ -91,7 +91,7 @@ int main()
   		} // if (readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
 
   	// Must be called before updating quaternions!
-  	myIMU.updateTime();
+  		myIMU.updateTime();
 
 	  // Sensors x (y)-axis of the accelerometer is aligned with the y (x)-axis of
 	  // the magnetometer; the magnetometer z-axis (+ down) is opposite to z-axis
@@ -106,36 +106,36 @@ int main()
 	  	// myIMU.gy*DEG_TO_RAD, myIMU.gz*DEG_TO_RAD, myIMU.my,
 	  	// myIMU.mx, myIMU.mz, myIMU.deltat);
 
-		if (1)
-		{
-		  	myIMU.delt_t = myIMU.millis() - myIMU.count;
-		  	if (myIMU.delt_t > 500)
-		  	{
-		  		if(1)
-		  		{
+  		if (1)
+  		{
+  			myIMU.delt_t = myIMU.millis() - myIMU.count;
+  			if (myIMU.delt_t > 500)
+  			{
+  				if(1)
+  				{
 		        // Print acceleration values in milligs!
-		  			printf("X-acceleration: "); printf("%d", 1000*myIMU.ax);
-		  			printf(" mg ");
-		  			printf("Y-acceleration: "); printf("%d", 1000*myIMU.ay);
-		  			printf(" mg ");
-		  			printf("Z-acceleration: "); printf("%d", 1000*myIMU.az);
-		  			printf(" mg \n");
+  					printf("X-acceleration: "); printf("%d", 1000*myIMU.ax);
+  					printf(" mg ");
+  					printf("Y-acceleration: "); printf("%d", 1000*myIMU.ay);
+  					printf(" mg ");
+  					printf("Z-acceleration: "); printf("%d", 1000*myIMU.az);
+  					printf(" mg \n");
 
 		        // Print gyro values in degree/sec
-		  			printf("X-gyro rate: "); printf("%d",myIMU.gx);
-		  			printf(" degrees/sec ");
-		  			printf("Y-gyro rate: "); printf("%d",myIMU.gy);
-		  			printf(" degrees/sec ");
-		  			printf("Z-gyro rate: "); printf("%d",myIMU.gz);
-		  			printf(" degrees/sec\n");
+  					printf("X-gyro rate: "); printf("%d",myIMU.gx);
+  					printf(" degrees/sec ");
+  					printf("Y-gyro rate: "); printf("%d",myIMU.gy);
+  					printf(" degrees/sec ");
+  					printf("Z-gyro rate: "); printf("%d",myIMU.gz);
+  					printf(" degrees/sec\n");
 
 		        // Print mag values in degree/sec
-		  			printf("X-mag field: "); printf("%d", myIMU.mx);
-		  			printf(" mG ");
-		  			printf("Y-mag field: "); printf("%d", myIMU.my);
-		  			printf(" mG ");
-		  			printf("Z-mag field: "); printf("%d", myIMU.mz);
-		  			printf(" mG\n");
+  					printf("X-mag field: "); printf("%d", myIMU.mx);
+  					printf(" mG ");
+  					printf("Y-mag field: "); printf("%d", myIMU.my);
+  					printf(" mG ");
+  					printf("Z-mag field: "); printf("%d", myIMU.mz);
+  					printf(" mG\n");
 
 			        myIMU.tempCount = myIMU.readTempData();  // Read the adc values
 			        // Temperature in degrees Centigrade
@@ -143,10 +143,9 @@ int main()
 			        // Print temperature in degrees Centigrade
 			        printf("Temperature is ");  printf("%d", myIMU.temperature);
 			        printf(" degrees C\n");
-		    	}
-				myIMU.count = myIMU.millis();
+			    }
+			    myIMU.count = myIMU.millis();
 	        } // if (myIMU.delt_t > 500)
 	  	} // if (!AHRS)
 	  }
 	}
-}
