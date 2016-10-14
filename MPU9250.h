@@ -13,6 +13,9 @@
 #include <initializer_list>
 #include <sys/time.h>
 
+#include <wiringPiI2C.h>
+#include <cmath>
+
 // See also MPU-9250 Register Map and Descriptions, Revision 4.0,
 // RM-MPU-9250A-00, Rev. 1.4, 9/9/2013 for registers not listed in above
 // document; the MPU9250 and MPU9150 are virtually identical but the latter has
