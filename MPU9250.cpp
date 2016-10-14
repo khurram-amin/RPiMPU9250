@@ -1,6 +1,6 @@
 #include "MPU9250.h"
 
-void MPU9250::MPU9250()
+MPU9250::MPU9250()
 {
   // Specify sensor full scale
   Gscale = GFS_250DPS;

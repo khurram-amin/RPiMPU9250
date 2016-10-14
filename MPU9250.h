@@ -230,7 +230,7 @@ class MPU9250
     int16_t accelCount[3];
     
   public:
-    void MPU9250();
+    MPU9250();
     void getMres();
     void getGres();
     void getAres();
