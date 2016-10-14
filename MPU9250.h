@@ -9,6 +9,7 @@
 #define _MPU9250_H_
 
 #include <stdint.h>
+#include <iterator>
 #include <initializer_list>
 
 // See also MPU-9250 Register Map and Descriptions, Revision 4.0,
