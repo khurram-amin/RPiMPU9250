@@ -15,17 +15,17 @@ int main()
 //		cout<<"reading data ..."<<endl;
 		mpu9250.readAccelData(data);
 		cout<<"T: "<<mpu9250.readTempInC()<<endl;
-		for(int i=0; i<3; i++)
-		{
-			cout<<i<<": "<<1.0f*data[i]*mpu9250.getAres()<<endl;
-		}
-		cout<<endl;
-		mpu9250.readGyroData(data);
-		for(int i=0; i<3; i++)
-		{
-			cout<<i<<": "<<1.0f*data[i]*mpu9250.getGres()<<endl;
-		}
-		cout<<endl;
+		// for(int i=0; i<3; i++)
+		// {
+		// 	cout<<i<<": "<<1.0f*data[i]*mpu9250.getAres()<<endl;
+		// }
+		// cout<<endl;
+		// mpu9250.readGyroData(data);
+		// for(int i=0; i<3; i++)
+		// {
+		// 	cout<<i<<": "<<1.0f*data[i]*mpu9250.getGres()<<endl;
+		// }
+		// cout<<endl;
 		mpu9250.readMagData(data);
 		for(int i=0; i<3; i++)
 		{
