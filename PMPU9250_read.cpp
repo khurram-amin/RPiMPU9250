@@ -1,4 +1,4 @@
-#include "MPU9250.h"
+#include "PMPU9250.h"
 #include <wiringPi.h>
 #include <iostream>
 
