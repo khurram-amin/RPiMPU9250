@@ -520,9 +520,9 @@ void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
   char MPU9250::readByte(uint8_t address, uint8_t subAddress)
   {
     char data; 
-        #ifdef 1
+        //#ifdef 1
                 std::cout<<"reading byte from "<<(int)address<<":"<<(int)subAddress<<std::endl;
-        #endif
+        //#endif
  
     if (address == MPU9250_ADDRESS)
       data = wiringPiI2CReadReg8(MPU9250::fdMPU9250, subAddress);
