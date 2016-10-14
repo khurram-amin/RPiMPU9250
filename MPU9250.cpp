@@ -508,9 +508,9 @@ void MPU9250::MPU9250SelfTest(float * destination) // Should return percent devi
 ///////////////////////////////////
 void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
   {
-  #ifdef 1
+  //#ifdef 1
     std::cout<<"writing byte to "<<(int)address<<":"<<(int)subAddress<<" = "<<(int)data<<std::endl;
-  #endif
+  //#endif
     if (address == MPU9250_ADDRESS)
       wiringPiI2CWriteReg8(MPU9250::fdMPU9250, subAddress, data);
     if (address == AK8963_ADDRESS)
