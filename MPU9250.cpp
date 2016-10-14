@@ -506,18 +506,18 @@ void MPU9250::MPU9250SelfTest(float * destination) // Should return percent devi
 //   }
 // }
 ///////////////////////////////////
-void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
+void MPU9250::writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
   {
   #ifdef 1
     std::cout<<"writing byte to "<<(int)address<<":"<<(int)subAddress<<" = "<<(int)data<<std::endl;
   #endif
     if (address == MPU9250_ADDRESS)
-      wiringPiI2CWriteReg8(fdMPU9250, subAddress, data);
+      wiringPiI2CWriteReg8(MPU9250::fdMPU9250, subAddress, data);
     if (address == AK8963_ADDRESS)
-      wiringPiI2CWriteReg8(fdAK8963, subAddress, data);
+      wiringPiI2CWriteReg8(MPU9250::fdAK8963, subAddress, data);
   }
 
-  char readByte(uint8_t address, uint8_t subAddress)
+  char MPU9250::readByte(uint8_t address, uint8_t subAddress)
   {
     char data; 
         #ifdef 1
@@ -525,14 +525,14 @@ void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
         #endif
  
     if (address == MPU9250_ADDRESS)
-      data = wiringPiI2CReadReg8(fdMPU9250, subAddress);
+      data = wiringPiI2CReadReg8(MPU9250::fdMPU9250, subAddress);
     if (address == AK8963_ADDRESS)
-      data = wiringPiI2CReadReg8(fdAK8963, subAddress);
+      data = wiringPiI2CReadReg8(MPU9250::fdAK8963, subAddress);
 
     return data;
   }
 
-  void readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest)
+  void MPU9250::readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest)
   {
     char data;
     for (char i = 0; i < count; i++)

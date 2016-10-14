@@ -255,7 +255,7 @@ class MPU9250
     void calibrateMPU9250(float * gyroBias, float * accelBias);
     void MPU9250SelfTest(float * destination);
     void writeByte(uint8_t, uint8_t, uint8_t);
-    uint8_t readByte(uint8_t, uint8_t);
+    char readByte(uint8_t, uint8_t);
     void readBytes(uint8_t, uint8_t, uint8_t, uint8_t *);
     void delay(unsigned long);
     unsigned long micros();
