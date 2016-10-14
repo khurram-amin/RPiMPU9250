@@ -5,7 +5,7 @@
 
 int main()
 {
-	MPU9250 myGPU;
+	MPU9250 myIMU;
 
 	uint8_t c = myIMU.readByte(MPU9250_ADDRESS, WHO_AM_I_MPU9250);
 
