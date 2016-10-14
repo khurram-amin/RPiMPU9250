@@ -17,9 +17,9 @@ MPU9250::MPU9250()
   Now = 0;        // used to calculate integration interval
 
   // Factory mag calibration and mag bias
-  magCalibration[3] = {0, 0, 0}, magbias[3] = {0, 0, 0};
+  magCalibration = {0, 0, 0}, magbias = {0, 0, 0};
   // Bias corrections for gyro and accelerometer
-  gyroBias[3] = {0, 0, 0}, accelBias[3] = {0, 0, 0};
+  gyroBias = {0, 0, 0}, accelBias = {0, 0, 0};
 }
 
 //==============================================================================
