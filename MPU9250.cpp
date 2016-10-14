@@ -17,9 +17,14 @@ MPU9250::MPU9250()
   Now = 0;        // used to calculate integration interval
 
   // Factory mag calibration and mag bias
-  magCalibration = {0, 0, 0}, magbias = {0, 0, 0};
+  auto init = std::initializer_list<float>({0,0,0});
+  std::copy(init.begin(), init.end(), magCalibration);
+  std::copy(init.begin(), init.end(), magbias);
+  std::copy(init.begin(), init.end(), gyroBias);
+  std::copy(init.begin(), init.end(), accelBias);
+  // magCalibration = {0, 0, 0}, magbias = {0, 0, 0};
   // Bias corrections for gyro and accelerometer
-  gyroBias = {0, 0, 0}, accelBias = {0, 0, 0};
+  // gyroBias = {0, 0, 0}, accelBias = {0, 0, 0};
 }
 
 //==============================================================================
