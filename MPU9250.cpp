@@ -512,6 +512,14 @@ unsigned long MPU9250::micros()
   return time_in_micros;
 }
 
+unsigned long MPU9250::millis()
+{
+  struct timeval tv;
+  gettimeofday(&tv,NULL);
+  unsigned long time_in_millis = 1000 * tv.tv_sec + tv.tv_usec/1000;
+  return time_in_millis;
+}
+
 void MPU9250::delay(unsigned long ms)
 {
   uint32_t start = micros();

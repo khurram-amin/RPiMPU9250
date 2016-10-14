@@ -108,7 +108,7 @@ int main()
 
 		if (1)
 		{
-		  	myIMU.delt_t = millis() - myIMU.count;
+		  	myIMU.delt_t = myIMU.millis() - myIMU.count;
 		  	if (myIMU.delt_t > 500)
 		  	{
 		  		if(1)
@@ -144,7 +144,7 @@ int main()
 			        printf("Temperature is ");  printf("%d", myIMU.temperature);
 			        printf(" degrees C\n");
 		    	}
-				myIMU.count = micros()/1000;
+				myIMU.count = myIMU.millis();
 	        } // if (myIMU.delt_t > 500)
 	  	} // if (!AHRS)
 	  }

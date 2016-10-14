@@ -254,6 +254,7 @@ class MPU9250
     void readBytes(uint8_t, uint8_t, uint8_t, uint8_t *);
     void delay(unsigned long);
     unsigned long micros();
+    unsigned long millis();
 };  // class MPU9250
 
 #endif // _MPU9250_H_
