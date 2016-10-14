@@ -1,5 +1,27 @@
 #include "MPU9250.h"
 
+void MPU9250::MPU9250()
+{
+  // Specify sensor full scale
+  Gscale = GFS_250DPS;
+  Ascale = AFS_2G;
+  // Choose either 14-bit or 16-bit magnetometer resolution
+  Mscale = MFS_16BITS;
+  // 2 for 8 Hz, 6 for 100 Hz continuous magnetometer data read
+  Mmode = 0x02;
+
+  delt_t = 0; // Used to control display output rate
+  count = 0; sumCount = 0; // used to control display output rate
+  deltat = 0.0f; sum = 0.0f;  // integration interval for both filter schemes
+  lastUpdate = 0; firstUpdate = 0; // used to calculate integration interval
+  Now = 0;        // used to calculate integration interval
+
+  // Factory mag calibration and mag bias
+  magCalibration[3] = {0, 0, 0}, magbias[3] = {0, 0, 0};
+  // Bias corrections for gyro and accelerometer
+  gyroBias[3] = {0, 0, 0}, accelBias[3] = {0, 0, 0};
+}
+
 //==============================================================================
 //====== Set of useful function to access acceleration. gyroscope, magnetometer,
 //====== and temperature data
