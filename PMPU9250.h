@@ -376,14 +376,16 @@ public:
 	void readMagData(int16_t * destination)
 	{
 		uint8_t rawData[7];  // x/y/z gyro register data, ST2 register stored here, must read ST2 at end of data acquisition
+		for (int8_t i = 0; i < 7; i ++)
+		{
+			rawData[i] = 0;
+		}
 		if (readByte(AK8963_ADDRESS, AK8963_ST1) & 0x01) { // wait for magnetometer data ready bit to be set
 			readBytes(AK8963_ADDRESS, AK8963_XOUT_L, 7, &rawData[0]);  // Read the six raw data and ST2 registers sequentially into data array
 			uint8_t c = rawData[6]; // End data read by reading ST2 register
-			for (int8_t i = 0; i < 6; i ++)
-			{
-				rawData[i] = 0;
-			}
+
 			if (!(c & 0x08)) { // Check if magnetic sensor overflow set, if not then report data
+				std::cout << "Here" << std::endl;
 				destination[0] = (int16_t)(((int16_t)rawData[1] << 8) | rawData[0]);  // Turn the MSB and LSB into a signed 16-bit value
 				destination[1] = (int16_t)(((int16_t)rawData[3] << 8) | rawData[2]);  // Data stored as little Endian
 				destination[2] = (int16_t)(((int16_t)rawData[5] << 8) | rawData[4]);

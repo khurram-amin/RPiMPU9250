@@ -29,7 +29,7 @@ int main()
 		mpu9250.readMagData(data);
 		for(int i=0; i<3; i++)
 		{
-			cout<<i<<": "<<1.0f*data[i]*mpu9250.getMres()<<endl;
+			cout<<i<<": "<<1.0f*data[i]<<endl;
 		}
 
 		cout<<endl<<endl<<endl;
