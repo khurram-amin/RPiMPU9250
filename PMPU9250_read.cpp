@@ -14,7 +14,7 @@ int main()
 	while(1)
 	{
 //		cout<<"reading data ..."<<endl;
-		//mpu9250.readAccelData(data);
+		mpu9250.readAccelData(data);
 		//cout<<"T: "<<mpu9250.readTempInC()<<endl;
 		// for(int i=0; i<3; i++)
 		// {
